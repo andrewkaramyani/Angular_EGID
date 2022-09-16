@@ -1,0 +1,25 @@
+<table class="table">
+<tr>
+  <td>Id</td>
+  <td>Person Name</td>
+  <td>Stock Name</td>
+  <td>price per unit</td>
+  <td>quantity</td>
+  <td>commission</td>
+  <!-- <td></td>
+  <td></td> -->
+</tr>
+<tr  *ngFor="let order of ordersService.listorders">
+  <td>{{order.id}}</td>
+  <td>{{order.personName}}</td>
+  <td>{{order.stockName}}</td>
+  <td>{{order.price| currency}}</td>
+  <td>{{order.quantity}}</td>
+  <td>{{order.commission| currency}}</td>
+  <!-- <td><button class='btn btn-primary col-1 m-1' (click)='getorder(order.id)'>Edit</button></td>
+  <td><button class='btn btn-danger col-1 m-1' (click)='Deleteorder(order.id)'>Delete</button></td> -->
+</tr>
+</table>
+
+  
+    

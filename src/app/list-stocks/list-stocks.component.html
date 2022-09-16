@@ -1,0 +1,19 @@
+<table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>Stock Name</th>
+      <th>price</th>
+    </tr>
+</thead>
+<tbody>
+    <tr  *ngFor="let stock of ordersService.listStocks">
+      <td>{{stock.id}}</td>
+      <td>{{stock.name}}</td>
+      <td>{{stock.price| currency}}</td>
+    </tr>
+</tbody>
+    </table>
+    
+      
+        

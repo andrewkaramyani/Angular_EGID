@@ -1,0 +1,44 @@
+<form novalidate autocomplete="off" #form="ngForm" (submit)="insertRecord(form)">
+    <input name="ordersService.formData.brokerID" type="hidden" [value]="ordersService.formData.brokerID">
+    <div class="form-group col-lg-6 col-sm-12 pt-2">    
+        <label class="font-weight-bold">Client Name</label>
+        <select required name="personID" class="form-control" [(ngModel)]="ordersService.formData.personID">
+           <option disabled>Select Your Client</option>
+            <option *ngFor="let person of ordersService.persons" [ngValue]="person.id">{{person.name}}</option>
+        </select>
+    </div>
+    <div class="form-group col-lg-6 col-sm-12 pt-2">    
+        <label class="font-weight-bold">Stock</label>
+        <select required name="stockID" class="form-control" [(ngModel)]="ordersService.formData.stockID" (change)="selectstock($event.target.selectedIndex)">
+           <option disabled>Select Stock</option>
+            <option *ngFor="let stock of ordersService.listStocks" [ngValue]="stock.id">{{stock.name}}</option>
+        </select>
+    </div>
+    <div class="form-group col-lg-6 col-sm-12 pt-2">    
+        <label class="font-weight-bold">Quantity</label>
+        <input required  name="quantity" min="1" type="number" class="form-control" [(ngModel)]="ordersService.formData.quantity" (keyup)="changeQuantity()">
+    </div>
+    <div class="form-group col-lg-6 col-sm-12 pt-2">    
+        <label class="font-weight-bold">Price</label>
+        <input class="form-control" name="price" [(ngModel)]="ordersService.formData.price" readonly/>
+    </div>  
+     <!-- <div class="form-group col-lg-6 col-sm-12">
+        <label class="font-weight-bold">Order Name</label>
+        <input class="form-control form-control" placeholder="Full Name" name="name"
+            #name="ngModel" [(ngModel)]="orderService.formData.name"
+            required [class.invalid]="name.invalid && name.touched">
+    </div>
+    <div class="form-row">
+        <div class="form-group col-lg-6 col-sm-12">
+            <label>Email</label>
+            <input class="form-control form-control" placeholder="email" name="email"
+                #email="ngModel" [(ngModel)]="orderService.formData.email"
+                required  [class.invalid]="email.invalid && email.touched"
+                pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$">
+        </div>
+    </div> -->
+    
+    <div class="form-group">
+        <button class="btn btn-primary  btn-block m-1 btn_orange" type="submit" [disabled]="form.invalid">SUBMIT</button>
+    </div>
+  </form>
